@@ -3,7 +3,7 @@
 
 """Prints out whether words might be in the dictionary or not."""
 
-import sys, cPickle
+import sys, gzip, cPickle
 import bloom
 
 wordstocheck = sys.argv[1:]
@@ -11,7 +11,7 @@ wordstocheck = sys.argv[1:]
 # Load up our special data structure. cPickle loads up a preexisting
 # BloomFilter object from disk and returns it to us. The class is
 # implemented in bloom.py.
-bf = cPickle.load (file ('dictbf.dat'))
+bf = cPickle.load (gzip.GzipFile ('dictbf.dat.gz', 'rb', 9))
 
 # Compute the false-positive rate of the filter.
 # FIXME: do something useful with this number?
