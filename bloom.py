@@ -171,7 +171,7 @@ class BloomFilter (object):
         return self.k, self.n, self.bits
 
 
-    def __setstate (self, state):
+    def __setstate__ (self, state):
         self.k, self.n, self.bits = state
         self.m = self.bits.size * 32
         self.funcs = [makeHashFunc (self.m, i) for i in xrange (self.k)]
