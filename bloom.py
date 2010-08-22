@@ -162,6 +162,21 @@ class BloomFilter (object):
             self.add (line.strip ())
 
 
+    # These functions allow us to save and load object state
+    # through Python's standard "pickle" system. Populating the filter
+    # is slow, so we'll speed things up by saving and restoring
+    # the filter state.
+
+    def __getstate__ (self):
+        return self.k, self.n, self.bits
+
+
+    def __setstate (self, state):
+        self.k, self.n, self.bits = state
+        self.m = self.bits.size * 32
+        self.funcs = [makeHashFunc (self.m, i) for i in xrange (self.k)]
+
+
 def optimalBloom (fprate, nexpected):
     """Create and return a well-optimized Bloom filter given a desired
     false-positive rate and an expected number of items to be added to
