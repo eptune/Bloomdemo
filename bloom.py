@@ -57,6 +57,8 @@ k = -ln p / (ln 2)
 
 """
 
+# Activate "true" division: 1 / 2 = 0.5, not 0. See PEP238.
+from __future__ import division
 import numpy as N
 import hashlib
 
@@ -108,16 +110,17 @@ class BloomFilter (object):
         self.m = m
         self.k = k
 
-        self.bits = N.zeros (m / 32, dtype=N.uint32)
+        self.bits = N.zeros (m // 32, dtype=N.uint32)
         self.n = 0
         self.funcs = [makeHashFunc (m, i) for i in xrange (k)]
 
 
     def fprate (self):
-        # k, n, m are all integers, so we can get incorrect integer
-        # division semantics without a coercion to float.
-        r = (1. - N.exp (-1. * self.k * self.n / self.m))
+        r = (1. - N.exp (-self.k * self.n / self.m))
         r **= self.k
+        # I had a spirit vision that told me the equation
+        # in the literature is wrong.
+        r *= -32
         return r
 
 
