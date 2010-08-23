@@ -59,6 +59,7 @@ bloom.py -- a simple Bloom filter implementation. Don't use it
   for anything real, because if you actually have a problem that
   calls for a Bloom filter, you'll almost surely need an
   implementation that was actually designed with care.
-importdictdata -- load the system dictionary data into a
-  file for faster operation
+dictbf.dat.gz -- the precomputed filter data. (It takes a long
+  time to compute the filter data from the dictionary.)
+importdictdata -- the program to precompute the filter data
 indict -- the main dictionary testing program
