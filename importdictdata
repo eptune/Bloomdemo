@@ -7,6 +7,12 @@ state for quick loading later."""
 import gzip, cPickle
 import bloom
 
+# This stuff is specific to Peter's machine: the dictionary contains about
+# 479000 words and lives in the standard Unixy location.
+
 bf = bloom.optimalBloom (0.05, 479000)
-bf.fillwords ()
+
+for line in file ('/usr/share/dict/words'):
+    bf.add (line.strip ())
+
 cPickle.dump (bf, gzip.GzipFile ('dictbf.dat.gz', 'wb', 9))

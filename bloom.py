@@ -150,21 +150,6 @@ class BloomFilter (object):
         self.bits.fill (0)
 
 
-    def fillwords (self):
-        # Demo function.
-
-        try:
-            f = file ('/usr/share/dict/words')
-        except IOError:
-            try:
-                f = file ('words')
-            except IOError:
-                raise Exception ('You need to put a copy of the "words" file here!')
-
-        for line in f:
-            self.add (line.strip ())
-
-
     # These functions allow us to save and load object state
     # through Python's standard "pickle" system. Populating the filter
     # is slow, so we'll speed things up by saving and restoring
