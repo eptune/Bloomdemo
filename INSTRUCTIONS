@@ -64,6 +64,9 @@ Here are some things you could try investigating:
   so that the false-positive-rate bug is never introduced. What happens
   to the ID of the most recent commit after the rebase, and why?
 
+- Create a few temporary branches to engineer a merge conflict, and
+  resolve it.
+
 - The very astute user will notice that the timestamps in the
   commit history of the repository do not proceed chronologically.
   What does that suggest about how I constructed the repository
