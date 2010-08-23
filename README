@@ -36,6 +36,15 @@ actually isn't. On the other hand, a Bloom filter will never yield
 false negatives: it won't say that a word isn't in the dictionary when
 it actually is.
 
+"indict" takes one potential option, "-s", which tells it not to
+print out information about words that are definitely not in the
+dictionary:
+
+$ ./indict -s barn bern birn
+barn MIGHT BE in the dictionary
+birn MIGHT BE in the dictionary
+$
+
 Bloom filters are useful when you have a large dictionary-type
 database that is slow to scan. If you're going to check the database
 for the presence of many keys that it may not contain, the filter can
