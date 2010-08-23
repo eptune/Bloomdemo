@@ -3,16 +3,15 @@
 
 """Prints out whether words might be in the dictionary or not."""
 
-import sys
+import sys, cPickle
 import bloom
 
 wordstocheck = sys.argv[1:]
 
-# Create our data structure using some sensible parameters for
-# our situation, and use a quickie hack function to fill it
-# with all of the words in the system dictionary.
-bf = bloom.optimalBloom (0.5, 479000)
-bf.fillwords ()
+# Load up our special data structure. cPickle loads up a preexisting
+# BloomFilter object from disk and returns it to us. The class is
+# implemented in bloom.py.
+bf = cPickle.load (file ('dictbf.dat'))
 
 # Compute the false-positive rate of the filter.
 # FIXME: do something useful with this number?

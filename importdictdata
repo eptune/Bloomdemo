@@ -1,0 +1,11 @@
+#! /usr/bin/env python
+# -*- python -*-
+
+"""Read the dictionary into a Bloom filter and save the filter
+state for quick loading later."""
+
+import bloom, cPickle
+
+bf = bloom.optimalBloom (0.05, 479000)
+bf.fillwords ()
+cPickle.dump (bf, file ('dictbf.dat', 'w'))

@@ -44,7 +44,7 @@ help you avoid a large number of slow checks to the database itself.
 NOTE WELL that this particular demo is not any faster than just
 grepping the system dictionary (/usr/share/dict/words on traditional
 Unix systems). This is because of the significant overhead of starting
-up the Python interpreter and creating the Bloom filter data as well as
+up the Python interpreter and loading the Bloom filter data as well as
 the simple nature of the dictionary "database". Furthermore, the
 filter implementation that I slapped together in 20 minutes is
 completely unoptimized. The best data structure is the one that you
@@ -53,9 +53,12 @@ don't use because you don't actually need it.
 Repository Contents
 ========================================
 
+.gitignore -- tells "git status" not to report boring files
 README -- this document
 bloom.py -- a simple Bloom filter implementation. Don't use it
   for anything real, because if you actually have a problem that
   calls for a Bloom filter, you'll almost surely need an
   implementation that was actually designed with care.
+importdictdata -- load the system dictionary data into a
+  file for faster operation
 indict -- the main dictionary testing program
