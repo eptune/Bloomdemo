@@ -1,0 +1,25 @@
+#! /usr/bin/env python
+# -*- python -*-
+
+"""Prints out whether words might be in the dictionary or not."""
+
+import sys
+import bloom
+
+wordstocheck = sys.argv[1:]
+
+# Create our data structure using some sensible parameters for
+# our situation, and use a quickie hack function to fill it
+# with all of the words in the system dictionary.
+bf = bloom.optimalBloom (0.5, 479000)
+bf.fillwords ()
+
+# Compute the false-positive rate of the filter.
+# FIXME: do something useful with this number?
+fp = bf.fprate ()
+
+for word in wordstocheck:
+    if bf.maycontain (word):
+        print word, 'MIGHT BE in the dictionary'
+    else:
+        print word, 'is DEFINITELY NOT in the dictionary'
