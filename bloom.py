@@ -116,7 +116,9 @@ class BloomFilter (object):
     def fprate (self):
         # k, n, m are all integers, so we can get incorrect integer
         # division semantics without a coercion to float.
-        return (1. - N.exp (-1. * self.k * self.n / self.m)) ** self.k
+        r = (1. - N.exp (-1. * self.k * self.n / self.m))
+        r **= self.k
+        return r
 
 
     def add (self, item):
