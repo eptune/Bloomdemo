@@ -1,0 +1,70 @@
+Your mission for this breakout session is to do the following:
+
+1. Read the beginning of the file README for some context as to the
+   purpose of the Python code you've just checked out. (You can
+   skip the "Implementation" section and everything after it for now.)
+
+2. Create and check out a new branch named "work" based on the current
+   "master" branch of this repository.
+
+3. Add a feature to the program "indict" that has it print out
+   the false-positive rate of its filter algorithm. The code to
+   compute this rate is already in place -- you just need to 
+   hook up the printing part of things. (The target rate is 5%.)
+   Briefly document the option in the file "README".
+
+4. In the course of doing this, you should encounter an OBVIOUS
+   bug in false-positive-rate code in the file "bloom.py". Fix it.
+   (You don't need any understanding of the code to spot the bug.)
+
+5. Update the version of the program listed at the top of the
+   README to 2.0.
+
+6. Commit your changes to the repository **as three separate
+   commits**:
+
+   - One commit fixing the false-positive-rate bug
+   - One commit adding the new option and documenting it
+     in the README
+   - One commit bumping the version number at the top of the README
+
+7. Merge your work back into the "master" branch.
+
+8. Tag your latest master commit as "v2.0". Congratulations, you've
+   made a software release!
+
+If you run into problems, don't hesitate to ask for help -- Git
+is a sharp tool and you can occasionally get your repository into 
+a weird state if you start flailing. The standard commands are
+pretty good about giving you sound advice, however.
+
+If you finish with time to spare
+========================================
+
+Here are some things you could try investigating:
+
+- Fool with around blowing away files and magically rescuing them
+  via "git checkout".
+
+- Which commit introduced the false-positive-rate bug? (Try "git
+  blame")
+
+- Explore the repository contents and history interactively and
+  prettily with your web browser by visiting
+
+  http://github.com/pkgwdemo/bloomdemo
+
+- On a conceptual level, what changes were made between versions of
+  1.0 and 2.0? ("git log")
+
+- What is the full source-code "diff" between versions 1.0 and 2.0?
+  ("git diff")
+
+- Try using "git rebase -i" to re-patch the repository history
+  so that the false-positive-rate bug is never introduced. What happens
+  to the ID of the most recent commit after the rebase, and why?
+
+- The very astute user will notice that the timestamps in the
+  commit history of the repository do not proceed chronologically.
+  What does that suggest about how I constructed the repository
+  history?
