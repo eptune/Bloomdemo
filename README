@@ -1,0 +1,61 @@
+Bloom Filter Demo
+Version: prerelease
+========================================
+
+This Git repository contains a very small Python program, "indict",
+which tells you whether a word might be in the system
+dictionary. Sample usage is:
+
+  $ ./indict barn bern birn born burn
+  barn MIGHT BE in the dictionary
+  bern is DEFINITELY NOT in the dictionary
+  birn MIGHT BE in the dictionary
+  born MIGHT BE in the dictionary
+  burn MIGHT BE in the dictionary
+
+"indict" takes one potential option, "-s", which tells it not to
+print out information about words that are definitely not in the
+dictionary:
+
+  $ ./indict -s barn bern birn
+  barn MIGHT BE in the dictionary
+  birn MIGHT BE in the dictionary
+
+Implementation
+========================================
+
+This program is implemented using a data structure called a Bloom
+filter. YOU DON'T HAVE TO WORRY ABOUT HOW IT WORKS FOR THIS EXERCISE
+but you may find it interesting. Bloom filters are essentially like
+Python sets: you can add items to them and later test whether they
+contain a given item. For a given number of items, a Bloom filter is
+much more efficient in computation time and memory than a Python
+set. The price of this efficiency is that a Bloom filter can yield
+false positives: it may say that a word is in the dictionary when it
+actually isn't. On the other hand, a Bloom filter will never yield
+false negatives: it won't say that a word isn't in the dictionary when
+it actually is.
+
+Bloom filters are useful when you have a large dictionary-type
+database that is slow to scan. If you're going to check the database
+for the presence of many keys that it may not contain, the filter can
+help you avoid a large number of slow checks to the database itself.
+
+NOTE WELL that this particular demo is not any faster than just
+grepping the system dictionary (/usr/share/dict/words on traditional
+Unix systems). This is because of the significant overhead of starting
+up the Python interpreter and creating the Bloom filter data as well as
+the simple nature of the dictionary "database". Furthermore, the
+filter implementation that I slapped together in 20 minutes is
+completely unoptimized. The best data structure is the one that you
+don't use because you don't actually need it.
+
+Repository Contents
+========================================
+
+README -- this document
+bloom.py -- a simple Bloom filter implementation. Don't use it
+  for anything real, because if you actually have a problem that
+  calls for a Bloom filter, you'll almost surely need an
+  implementation that was actually designed with care.
+indict -- the main dictionary testing program
