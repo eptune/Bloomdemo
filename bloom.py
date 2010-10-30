@@ -118,9 +118,6 @@ class BloomFilter (object):
     def fprate (self):
         r = (1. - N.exp (-self.k * self.n / self.m))
         r **= self.k
-        # I had a spirit vision that told me the equation
-        # in the literature is wrong.
-        r *= -32
         return r
 
 
