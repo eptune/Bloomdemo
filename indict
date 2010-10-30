@@ -25,5 +25,7 @@ fp = bf.fprate ()
 for word in wordstocheck:
     if bf.maycontain (word):
         print word, 'MIGHT BE in the dictionary'
+        print 'False postive rate is %f ' % (fp)
     elif not skipMisses:
         print word, 'is DEFINITELY NOT in the dictionary'
+

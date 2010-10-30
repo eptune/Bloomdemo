@@ -21,6 +21,8 @@ dictionary:
   barn MIGHT BE in the dictionary
   birn MIGHT BE in the dictionary
 
+It also prints out the false postive rate.
+
 Implementation
 ========================================
 
